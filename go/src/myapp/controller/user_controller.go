@@ -1,13 +1,5 @@
 package controller
 
-// import (
-// 	// "myapp/database"
-// 	// "myapp/model"
-// 	// "net/http"
-
-// 	"github.com/gin-gonic/gin"
-// )
-
 import (
 	"myapp/database"
 	"net/http"
@@ -115,17 +107,6 @@ func SearchUserByEmailHandler(c *gin.Context) {
 
 	// If user is found, return the user data
 	c.JSON(http.StatusOK, user)
-}
-
-// 全てのユーザーを取得
-func GetUsers(c *gin.Context) {
-	// db := database.ConnectDB()
-	// defer db.Close()
-
-	// var users []model.User
-	// db.Find(&users)
-
-	// c.JSON(http.StatusOK, users)
 }
 
 // 構造体：リクエストボディのバインド用

@@ -11,3 +11,54 @@ POST http://localhost:8080/feature_data/by_userid
 {
     "user_id":1
 }
+
+###
+POST http://localhost:8080/feature_data/dummy
+
+###
+POST http://localhost:8080/cook_log/all_by_userid
+
+{
+    "user_link_id":1
+}
+
+###
+POST http://localhost:8080/cook_log/detail
+
+{
+  "user_id": 1,
+  "cook_log_id": 2
+}
+
+###
+POST http://localhost:8080/cook_log/category_average
+
+{
+  "user_id": 1
+}
+
+###
+POST http://localhost:8080/cook_log/common_steps
+
+{
+  "user_id": 1
+}
+
+###
+POST http://localhost:8080/cook_log/common_steps_by_cook_log
+
+{
+  "user_id": 1,
+  "cook_log_ids": [1,2, 3] 
+}
+
+###
+GET http://localhost:8080/cook_log/all
+
+###
+POST http://localhost:8080/cook_log/common_action_values
+
+{
+  "user_id": 1,
+  "cook_action_ingredients_id": 1
+}

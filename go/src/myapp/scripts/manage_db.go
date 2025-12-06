@@ -42,6 +42,9 @@ go run scripts/manage_db.go -action deleteFeatureDatabyid -id 3
 userの情報全件取得
 go run scripts/manage_db.go -action getAllUsers
 
+FeatureDataLinksの全件取得
+go run scripts/manage_db.go -action getAllFeatureDataLinks
+
 */
 
 package main
@@ -201,6 +204,32 @@ func getAllUsers() {
 	}
 }
 
+func getAllFeatureDataLinks() {
+	database.ConnectDB()
+	defer database.CloseDB()
+
+	// 全件取得
+	list, err := database.FindAllFeatureDataLinks()
+	if err != nil {
+		log.Fatalf("❌ FeatureDataLink 取得に失敗しました: %v", err)
+	}
+
+	// 件数ログ
+	fmt.Printf("📊 FeatureDataLink 件数: %d 件\n", len(list))
+
+	// 中身を1件ずつ出力
+	for _, d := range list {
+		fmt.Printf("🟢 ID: %d | CookLogID: %d | RecipeStepID: %d | EvaluationItemID: %d | Data: %.2f | CreatedAt: %s\n",
+			d.ID,
+			d.CookLogID,
+			d.RecipeStepID,
+			d.EvaluationItemID,
+			d.Data,
+			d.CreatedAt.Format("2006-01-02 15:04"),
+		)
+	}
+}
+
 func main() {
 	config.LoadConfig()
 
@@ -251,6 +280,9 @@ func main() {
 
 	case "getAllUsers":
 		getAllUsers()
+
+	case "getAllFeatureDataLinks":
+		getAllFeatureDataLinks()
 
 	default:
 		log.Fatalf("Unknown action: %s", *action)

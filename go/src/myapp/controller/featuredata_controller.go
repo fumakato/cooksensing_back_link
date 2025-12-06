@@ -321,3 +321,302 @@ func GetFeatureDatasByUserIDWithinDays(c *gin.Context) {
 	// 成功した場合、データをJSONで返す
 	c.JSON(http.StatusOK, gin.H{"data": featureData})
 }
+
+func GetDummy(c *gin.Context) {
+	// 	dummyData := gin.H{
+	// 		"recipes": []gin.H{
+	// 			{
+	// 				"recipeName": "カレー",
+	// 				"steps": []gin.H{
+	// 					{
+	// 						"name": "洗う",
+	// 						"evaluations": []gin.H{
+	// 							{"label": "速さ", "value": 0.6, "unit": "m/s", "average": "0.5"},
+	// 							{"label": "安定性", "value": 4.5, "unit": ""},
+	// 							{"label": "綺麗さ", "value": 4.6, "unit": "点"},
+	// 							{"label": "総合評価", "value": 4.3, "unit": "点"},
+	// 						},
+	// 					},
+	// 					{
+	// 						"name": "皮剥き",
+	// 						"evaluations": []gin.H{
+	// 							{"label": "速さ", "value": 3.2, "unit": "個/分"},
+	// 							{"label": "安定性", "value": 4.2, "unit": ""},
+	// 							{"label": "綺麗さ", "value": 4.1, "unit": "点"},
+	// 							{"label": "総合評価", "value": 4.0, "unit": "点"},
+	// 						},
+	// 					},
+	// 					{
+	// 						"name": "くし切り",
+	// 						"evaluations": []gin.H{
+	// 							{"label": "速さ", "value": 2.7, "unit": "個/分"},
+	// 							{"label": "安定性", "value": 4.4, "unit": ""},
+	// 							{"label": "綺麗さ", "value": 4.4, "unit": "点"},
+	// 							{"label": "総合評価", "value": 4.2, "unit": "点"},
+	// 						},
+	// 					},
+	// 					{
+	// 						"name": "半月切り",
+	// 						"evaluations": []gin.H{
+	// 							{"label": "速さ", "value": 2.5, "unit": "個/分"},
+	// 							{"label": "安定性", "value": 4.0, "unit": ""},
+	// 							{"label": "綺麗さ", "value": 4.0, "unit": "点"},
+	// 							{"label": "総合評価", "value": 4.1, "unit": "点"},
+	// 						},
+	// 					},
+	// 					{
+	// 						"name": "乱切り",
+	// 						"evaluations": []gin.H{
+	// 							{"label": "速さ", "value": 2.9, "unit": "個/分"},
+	// 							{"label": "安定性", "value": 3.8, "unit": ""},
+	// 							{"label": "綺麗さ", "value": 3.8, "unit": "点"},
+	// 							{"label": "総合評価", "value": 3.9, "unit": "点"},
+	// 						},
+	// 					},
+	// 					{
+	// 						"name": "炒める",
+	// 						"evaluations": []gin.H{
+	// 							{"label": "速さ", "value": 0.8, "unit": "m/s"},
+	// 							{"label": "時間", "value": 150, "unit": "秒"},
+	// 							{"label": "焦げ", "value": 0.5, "unit": "点"},
+	// 							{"label": "総合評価", "value": 4.5, "unit": "点"},
+	// 						},
+	// 					},
+	// 					{
+	// 						"name": "調味料の投入",
+	// 						"evaluations": []gin.H{
+	// 							{"label": "量の正確性", "value": 97, "unit": "%"},
+	// 							{"label": "手際の良さ", "value": 4.7, "unit": "点"},
+	// 							{"label": "総合評価", "value": 4.6, "unit": "点"},
+	// 						},
+	// 					},
+	// 					{
+	// 						"name": "煮込む",
+	// 						"evaluations": []gin.H{
+	// 							{"label": "時間", "value": 1200, "unit": "秒"},
+	// 							{"label": "火加減", "value": 3, "unit": "段階"},
+	// 							{"label": "総合評価", "value": 4.4, "unit": "点"},
+	// 						},
+	// 					},
+	// 				},
+	// 			},
+	// 		{
+	// 			"recipeName": "肉じゃが",
+	// 			"steps": []gin.H{
+	// 				{
+	// 					"name": "洗う",
+	// 					"evaluations": []gin.H{
+	// 						{"label": "速さ", "value": 0.5, "unit": "m/s"},
+	// 						{"label": "安定性", "value": 4.3, "unit": ""},
+	// 						{"label": "綺麗さ", "value": 4.7, "unit": "点"},
+	// 						{"label": "総合評価", "value": 4.2, "unit": "点"},
+	// 					},
+	// 				},
+	// 				{
+	// 					"name": "皮剥き",
+	// 					"evaluations": []gin.H{
+	// 						{"label": "速さ", "value": 3.0, "unit": "個/分"},
+	// 						{"label": "安定性", "value": 4.5, "unit": ""},
+	// 						{"label": "綺麗さ", "value": 4.2, "unit": "点"},
+	// 						{"label": "総合評価", "value": 4.1, "unit": "点"},
+	// 					},
+	// 				},
+	// 				{
+	// 					"name": "くし切り",
+	// 					"evaluations": []gin.H{
+	// 						{"label": "速さ", "value": 2.8, "unit": "個/分"},
+	// 						{"label": "安定性", "value": 4.6, "unit": ""},
+	// 						{"label": "綺麗さ", "value": 4.3, "unit": "点"},
+	// 						{"label": "総合評価", "value": 4.2, "unit": "点"},
+	// 					},
+	// 				},
+	// 				{
+	// 					"name": "乱切り",
+	// 					"evaluations": []gin.H{
+	// 						{"label": "速さ", "value": 3.1, "unit": "個/分"},
+	// 						{"label": "安定性", "value": 4.1, "unit": ""},
+	// 						{"label": "綺麗さ", "value": 3.9, "unit": "点"},
+	// 						{"label": "総合評価", "value": 4.0, "unit": "点"},
+	// 					},
+	// 				},
+	// 				{
+	// 					"name": "炒める",
+	// 					"evaluations": []gin.H{
+	// 						{"label": "速さ", "value": 0.7, "unit": "m/s"},
+	// 						{"label": "時間", "value": 140, "unit": "秒"},
+	// 						{"label": "焦げ", "value": 0.4, "unit": "点"},
+	// 						{"label": "総合評価", "value": 4.3, "unit": "点"},
+	// 					},
+	// 				},
+	// 				{
+	// 					"name": "調味料の投入",
+	// 					"evaluations": []gin.H{
+	// 						{"label": "量の正確性", "value": 95, "unit": "%"},
+	// 						{"label": "手際の良さ", "value": 4.6, "unit": "点"},
+	// 						{"label": "総合評価", "value": 4.4, "unit": "点"},
+	// 					},
+	// 				},
+	// 				{
+	// 					"name": "煮詰める",
+	// 					"evaluations": []gin.H{
+	// 						{"label": "時間", "value": 1100, "unit": "秒"},
+	// 						{"label": "火加減", "value": 4, "unit": "段階"},
+	// 						{"label": "総合評価", "value": 4.5, "unit": "点"},
+	// 					},
+	// 				},
+	// 			},
+	// 		},
+	// 	},
+	// }
+
+	dummyData := gin.H{
+		"recipes": []gin.H{
+			{
+				"recipeName": "カレー",
+				"cookLogId":  1,
+				"steps": []gin.H{
+					{
+						"name":         "洗う",
+						"recipeStepId": 1,
+						"evaluations": []gin.H{
+							{"evaluation_item_id": 1, "feature_data_link_id": 1, "label": "速さ", "value": 0.6, "unit": "m/s", "average": 0.5},
+							{"label": "安定性", "value": 4.5, "unit": "", "average": 4.2},
+							{"label": "綺麗さ", "value": 4.6, "unit": "点", "average": 4.4},
+							{"label": "総合評価", "value": 4.3, "unit": "点", "average": 4.1},
+						},
+					},
+					{
+						"name": "皮剥き",
+						"evaluations": []gin.H{
+							{"label": "速さ", "value": 3.2, "unit": "個/分", "average": 3.0},
+							{"label": "安定性", "value": 4.2, "unit": "", "average": 4.0},
+							{"label": "綺麗さ", "value": 4.1, "unit": "点", "average": 3.9},
+							{"label": "総合評価", "value": 4.0, "unit": "点", "average": 3.8},
+						},
+					},
+					{
+						"name": "くし切り",
+						"evaluations": []gin.H{
+							{"label": "速さ", "value": 2.7, "unit": "個/分", "average": 2.6},
+							{"label": "安定性", "value": 4.4, "unit": "", "average": 4.2},
+							{"label": "綺麗さ", "value": 4.4, "unit": "点", "average": 4.1},
+							{"label": "総合評価", "value": 4.2, "unit": "点", "average": 4.0},
+						},
+					},
+					{
+						"name": "半月切り",
+						"evaluations": []gin.H{
+							{"label": "速さ", "value": 2.5, "unit": "個/分", "average": 2.4},
+							{"label": "安定性", "value": 4.0, "unit": "", "average": 3.8},
+							{"label": "綺麗さ", "value": 4.0, "unit": "点", "average": 3.9},
+							{"label": "総合評価", "value": 4.1, "unit": "点", "average": 4.0},
+						},
+					},
+					{
+						"name": "乱切り",
+						"evaluations": []gin.H{
+							{"label": "速さ", "value": 2.9, "unit": "個/分", "average": 2.8},
+							{"label": "安定性", "value": 3.8, "unit": "", "average": 3.9},
+							{"label": "綺麗さ", "value": 3.8, "unit": "点", "average": 3.9},
+							{"label": "総合評価", "value": 3.9, "unit": "点", "average": 4.0},
+						},
+					},
+					{
+						"name": "炒める",
+						"evaluations": []gin.H{
+							{"label": "速さ", "value": 0.8, "unit": "m/s", "average": 0.75},
+							{"label": "時間", "value": 150, "unit": "秒", "average": 160},
+							{"label": "焦げ", "value": 0.5, "unit": "点", "average": 0.6},
+							{"label": "総合評価", "value": 4.5, "unit": "点", "average": 4.3},
+						},
+					},
+					{
+						"name": "調味料の投入",
+						"evaluations": []gin.H{
+							{"label": "量の正確性", "value": 97, "unit": "%", "average": 95},
+							{"label": "手際の良さ", "value": 4.7, "unit": "点", "average": 4.5},
+							{"label": "総合評価", "value": 4.6, "unit": "点", "average": 4.4},
+						},
+					},
+					{
+						"name": "煮込む",
+						"evaluations": []gin.H{
+							{"label": "時間", "value": 1200, "unit": "秒", "average": 1100},
+							{"label": "火加減", "value": 3, "unit": "段階", "average": 3},
+							{"label": "総合評価", "value": 4.4, "unit": "点", "average": 4.2},
+						},
+					},
+				},
+			},
+			{
+				"recipeName": "肉じゃが",
+				"cookLog":    2,
+				"steps": []gin.H{
+					{
+						"name": "洗う",
+						"evaluations": []gin.H{
+							{"label": "速さ", "value": 0.5, "unit": "m/s", "average": "0.6"},
+							{"label": "安定性", "value": 4.3, "unit": "", "average": "4.0"},
+							{"label": "綺麗さ", "value": 4.7, "unit": "点", "average": "4.2"},
+							{"label": "総合評価", "value": 4.2, "unit": "点", "average": "4.1"},
+						},
+					},
+					{
+						"name": "皮剥き",
+						"evaluations": []gin.H{
+							{"label": "速さ", "value": 3.0, "unit": "個/分", "average": "2.5"},
+							{"label": "安定性", "value": 4.5, "unit": "", "average": "4.0"},
+							{"label": "綺麗さ", "value": 4.2, "unit": "点", "average": "4.0"},
+							{"label": "総合評価", "value": 4.1, "unit": "点", "average": "4.0"},
+						},
+					},
+					{
+						"name": "くし切り",
+						"evaluations": []gin.H{
+							{"label": "速さ", "value": 2.8, "unit": "個/分", "average": "2.5"},
+							{"label": "安定性", "value": 4.6, "unit": "", "average": "4.2"},
+							{"label": "綺麗さ", "value": 4.3, "unit": "点", "average": "4.1"},
+							{"label": "総合評価", "value": 4.2, "unit": "点", "average": "4.0"},
+						},
+					},
+					{
+						"name": "乱切り",
+						"evaluations": []gin.H{
+							{"label": "速さ", "value": 3.1, "unit": "個/分", "average": "2.6"},
+							{"label": "安定性", "value": 4.1, "unit": "", "average": "3.9"},
+							{"label": "綺麗さ", "value": 3.9, "unit": "点", "average": "3.8"},
+							{"label": "総合評価", "value": 4.0, "unit": "点", "average": "4.0"},
+						},
+					},
+					{
+						"name": "炒める",
+						"evaluations": []gin.H{
+							{"label": "速さ", "value": 0.7, "unit": "m/s", "average": "0.6"},
+							{"label": "時間", "value": 140, "unit": "秒", "average": "150"},
+							{"label": "焦げ", "value": 0.4, "unit": "点", "average": "0.5"},
+							{"label": "総合評価", "value": 4.3, "unit": "点", "average": "4.2"},
+						},
+					},
+					{
+						"name": "調味料の投入",
+						"evaluations": []gin.H{
+							{"label": "量の正確性", "value": 95, "unit": "%", "average": "90"},
+							{"label": "手際の良さ", "value": 4.6, "unit": "点", "average": "4.3"},
+							{"label": "総合評価", "value": 4.4, "unit": "点", "average": "4.2"},
+						},
+					},
+					{
+						"name": "煮詰める",
+						"evaluations": []gin.H{
+							{"label": "時間", "value": 1100, "unit": "秒", "average": "1200"},
+							{"label": "火加減", "value": 4, "unit": "段階", "average": "3"},
+							{"label": "総合評価", "value": 4.5, "unit": "点", "average": "4.3"},
+						},
+					},
+				},
+			},
+		},
+	}
+
+	c.JSON(http.StatusOK, dummyData)
+}

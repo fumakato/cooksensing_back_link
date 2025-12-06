@@ -38,6 +38,7 @@ func SetupRouter() *gin.Engine {
 		userRoutes.POST("/search_user_by_firebase_auth_uid", controller.SearchUserByFirebaseAuthUidHandler)
 		userRoutes.POST("/search_user_by_name_and_firebase_auth_uid", controller.SearchUserByNameAndUIDHandler)
 	}
+
 	featureDataRoutes := router.Group("/feature_data")
 	{
 		featureDataRoutes.POST("", controller.CreateFeatureDatas)
@@ -47,7 +48,12 @@ func SetupRouter() *gin.Engine {
 
 		//折れ線グラフ用（日付指定込み）daysに日数を入れる 1ヶ月なら30 1年前なら365 全部なら0 をリクエストに入れる
 		featureDataRoutes.POST("/by_userid_within_days", controller.GetFeatureDatasByUserIDWithinDays)
+
+		//レシピごとの能力値を渡すところ
+		featureDataRoutes.POST("/dummy", controller.GetDummy)
+
 	}
+
 	bestRoutes := router.Group("/best")
 	{
 		bestRoutes.GET("", controller.GetBestAll)
@@ -57,6 +63,18 @@ func SetupRouter() *gin.Engine {
 	histogramRoutes := router.Group("/histogram")
 	{
 		histogramRoutes.GET("", controller.GetHistogramAll)
+	}
+
+	cookLog := router.Group("/cook_log")
+	{
+		cookLog.POST("/all_by_userid", controller.GetCookLogAllByUserLinkID)
+		cookLog.POST("/detail", controller.GetCookLogDetail)
+		cookLog.POST("/category_average", controller.GetCookCategoryAverages)
+		cookLog.POST("/common_steps", controller.GetCommonStepsByUserID)
+		cookLog.POST("/common_steps_by_cook_log", controller.GetCommonStepsByCookLogs)
+		cookLog.GET("/all", controller.GetMasterAll)
+		cookLog.POST("/common_action_values", controller.GetCommonActionValues)
+
 	}
 
 	return router

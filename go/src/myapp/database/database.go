@@ -43,13 +43,24 @@ func AutoMigrate() {
 		db.AutoMigrate(&model.Action{})
 		db.AutoMigrate(&model.DisplayItem{})
 		// db.AutoMigrate(&model.Label{})
+
+		//new!!
+		db.AutoMigrate(&model.UserLink{})
+		db.AutoMigrate(&model.CookCategory{})
+		db.AutoMigrate(&model.CookAction{})
+		db.AutoMigrate(&model.Ingredients{})
+		db.AutoMigrate(&model.Recipe{})
+		db.AutoMigrate(&model.CookActionIngredients{})
+		db.AutoMigrate(&model.RecipeStep{})
+		db.AutoMigrate(&model.EvaluationItem{})
+		db.AutoMigrate(&model.FeatureDataLink{})
+
 	} else {
 		log.Fatalf("Database is not initialized.")
 	}
 }
 
 // 初期データの登録
-// func InitData(db *gorm.DB) {
 func InitData() {
 	if err := db.First(&model.User{}).Error; err == gorm.ErrRecordNotFound {
 		for _, tmp := range model.UserInitData {
@@ -81,6 +92,68 @@ func InitData() {
 			db.Create(&tmp)
 		}
 	}
+
+	// ==== ここから今回追加した初期データ ====
+
+	if err := db.First(&model.UserLink{}).Error; err == gorm.ErrRecordNotFound {
+		for _, tmp := range model.UserLink_InitData {
+			db.Create(&tmp)
+		}
+	}
+
+	if err := db.First(&model.CookCategory{}).Error; err == gorm.ErrRecordNotFound {
+		for _, tmp := range model.CookCategory_InitData {
+			db.Create(&tmp)
+		}
+	}
+
+	if err := db.First(&model.CookAction{}).Error; err == gorm.ErrRecordNotFound {
+		for _, tmp := range model.CookAction_InitData {
+			db.Create(&tmp)
+		}
+	}
+
+	if err := db.First(&model.Ingredients{}).Error; err == gorm.ErrRecordNotFound {
+		for _, tmp := range model.Ingredients_InitData {
+			db.Create(&tmp)
+		}
+	}
+
+	if err := db.First(&model.Recipe{}).Error; err == gorm.ErrRecordNotFound {
+		for _, tmp := range model.Recipe_InitData {
+			db.Create(&tmp)
+		}
+	}
+
+	if err := db.First(&model.CookActionIngredients{}).Error; err == gorm.ErrRecordNotFound {
+		for _, tmp := range model.CookActionIngredients_InitData {
+			db.Create(&tmp)
+		}
+	}
+
+	if err := db.First(&model.RecipeStep{}).Error; err == gorm.ErrRecordNotFound {
+		for _, tmp := range model.RecipeStep_InitData {
+			db.Create(&tmp)
+		}
+	}
+
+	if err := db.First(&model.EvaluationItem{}).Error; err == gorm.ErrRecordNotFound {
+		for _, tmp := range model.EvaluationItem_InitData {
+			db.Create(&tmp)
+		}
+	}
+
+	if err := db.First(&model.CookLog{}).Error; err == gorm.ErrRecordNotFound {
+		for _, tmp := range model.CookLog_InitData {
+			db.Create(&tmp)
+		}
+	}
+
+	if err := db.First(&model.FeatureDataLink{}).Error; err == gorm.ErrRecordNotFound {
+		for _, tmp := range model.FeatureDataLink_InitData {
+			db.Create(&tmp)
+		}
+	}
 }
 
 func DropAllTables() {
@@ -90,7 +163,17 @@ func DropAllTables() {
 		db.Migrator().DropTable(&model.BestData{})
 		db.Migrator().DropTable(&model.Histogram{})
 		db.Migrator().DropTable(&model.Action{})
-		db.Migrator().DropTable(&model.DisplayItem{})
+		db.Migrator().DropTable(&model.UserLink{})
+		db.Migrator().DropTable(&model.Recipe{})
+		db.Migrator().DropTable(&model.CookCategory{})
+		db.Migrator().DropTable(&model.CookAction{})
+		db.Migrator().DropTable(&model.Ingredients{})
+		db.Migrator().DropTable(&model.CookActionIngredients{})
+		db.Migrator().DropTable(&model.RecipeStep{})
+		db.Migrator().DropTable(&model.EvaluationItem{})
+		db.Migrator().DropTable(&model.CookLog{})
+		db.Migrator().DropTable(&model.FeatureDataLink{})
+
 	} else {
 		log.Fatalf("Database is not initialized.")
 	}
